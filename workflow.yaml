@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: vault-image-
+spec:
+  podGC:
+    strategy: OnPodSuccess # delete pods when workflow is successful
+  entrypoint: build-vault-image
+  arguments:
+    parameters:
+    - name: git_ref_type
+      value: branches
+    - name: git_version
+  templates:
+  - name: build-vault-image
+    inputs:
+      parameters:
+      - name: git_ref_type
+      - name: git_version
+    steps:
+    - - name: mirror-image
+        templateRef:
+          name: flavor-image-mirror-template
+          template: "{{inputs.parameters.git_ref_type}}"
+        arguments:
+          parameters:
+          - name: git_repo
+            value: https://github.com/bradfordwagner/container-vault-mirror.git
+          - name: git_version
+            value: "{{inputs.parameters.git_version}}"
+          - name: repo_name
+            value: quay.io/bradfordwagner/vault
+          - name: upstream_repo
+            value: "{{ item.repo }}"
+          - name: upstream_repo_name_override
+            value: "{{ item.name_override }}"
+          - name: upstream_tag
+            value: "{{ item.tag }}"
+          - name: runtime_platforms
+            value: "{{ item.runtime_platforms }}"
+          - name: tag_suffix
+            value: "-{{ item.name_override }}-{{ item.tag }}"
+        withItems:
+        - { repo: 'vault', tag: '1.9.4', name_override: vault, runtime_platforms: [linux/amd64, linux/arm64] }
+
