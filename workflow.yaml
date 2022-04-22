@@ -41,5 +41,5 @@ spec:
           - name: tag_suffix
             value: "-{{ item.name_override }}-{{ item.tag }}"
         withItems:
-        - { repo: 'vault', tag: '1.9.4', name_override: vaault, runtime_platforms: [linux/amd64, linux/arm64] }
+        - { repo: 'vault', tag: '1.9.4', name_override: vault, runtime_platforms: [linux/amd64, linux/arm64] }
 
