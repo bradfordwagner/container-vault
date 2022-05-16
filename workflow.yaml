@@ -41,7 +41,8 @@ spec:
           - name: tag_suffix
             value: "-{{ item.name_override }}-{{ item.tag }}"
         withItems:
-        - { repo: 'hashicorp/vault'             , tag: '1.9.4', name_override: vault           , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { repo: 'hashicorp/vault'             , tag: '1.9.6', name_override: vault           , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { repo: 'hashicorp/vault-csi-provider', tag: '1.1.0', name_override: vault-csi-driver, runtime_platforms: [linux/amd64, linux/arm64] }
+        - { repo: 'hashicorp/vault'             , tag: '1.9.4' , name_override: vault           , runtime_platforms: [linux/amd64, linux/arm64] }
+        - { repo: 'hashicorp/vault'             , tag: '1.9.6' , name_override: vault           , runtime_platforms: [linux/amd64, linux/arm64] }
+        - { repo: 'hashicorp/vault'             , tag: '1.10.3', name_override: vault           , runtime_platforms: [linux/amd64, linux/arm64] }
+        - { repo: 'hashicorp/vault-csi-provider', tag: '1.1.0' , name_override: vault-csi-driver, runtime_platforms: [linux/amd64, linux/arm64] }
 
