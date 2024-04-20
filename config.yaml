@@ -1,7 +1,6 @@
 # created by init task for use with github actons
-target_repo: ghcr.io/bradfordwagner/template-mirror
+target_repo: ghcr.io/bradfordwagner/vault-mirror
 builds:
-  # - { repo: alpine    , tag: '3.19'   , platforms: [linux/amd64    , linux/arm64] }
-  - { repo: 'hashicorp/vault'              , tag: '1.14.0' , name_override: vault                  , runtime_platforms: [linux/amd64 , linux/arm64] }
-  # - { repo: 'hashicorp/vault-csi-provider' , tag: '1.4.0'  , name_override: vault-csi-driver       , runtime_platforms: [linux/amd64 , linux/arm64] }
-  # - { repo: 'hashicorp/vault-k8s'          , tag: '1.2.1'  , name_override: vault-webhook-injector , runtime_platforms: [linux/amd64 , linux/arm64] }
+  - { repo: 'hashicorp/vault'              , tag: '1.14.0' , repo_override: vault                  , platforms: [linux/amd64 , linux/arm64] }
+  - { repo: 'hashicorp/vault-csi-provider' , tag: '1.4.0'  , name_override: vault-csi-driver       , platforms: [linux/amd64 , linux/arm64] }
+  - { repo: 'hashicorp/vault-k8s'          , tag: '1.2.1'  , name_override: vault-webhook-injector , platforms: [linux/amd64 , linux/arm64] }
