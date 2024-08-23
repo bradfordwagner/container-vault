@@ -1,6 +1,20 @@
-# created by init task for use with github actons
 target_repo: ghcr.io/bradfordwagner/vault-mirror
 builds:
-  - { repo: hashicorp/vault              , tag: 1.16.1 , repo_override: vault                  , platforms: [linux/amd64 , linux/arm64] }
-  - { repo: hashicorp/vault-csi-provider , tag: 1.4.2  , repo_override: vault-csi-provider     , platforms: [linux/amd64 , linux/arm64] }
-  - { repo: hashicorp/vault-k8s          , tag: 1.4.1  , repo_override: vault-webhook-injector , platforms: [linux/amd64 , linux/arm64] }
+    - repo: hashicorp/vault
+      repo_override: vault
+      tag: 1.17.3
+      archs:
+        - linux/amd64
+        - linux/arm64
+    - repo: hashicorp/vault-csi-provider
+      repo_override: vault-csi-provider
+      tag: 1.4.2
+      archs:
+        - linux/amd64
+        - linux/arm64
+    - repo: hashicorp/vault-k8s
+      repo_override: vault-webhook-injector
+      tag: 1.4.2
+      archs:
+        - linux/amd64
+        - linux/arm64
